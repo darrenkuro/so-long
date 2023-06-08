@@ -6,7 +6,7 @@
 #    By: dlu <dlu@student.42berlin.de>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/23 12:01:08 by dlu               #+#    #+#              #
-#    Updated: 2023/06/08 12:57:46 by dlu              ###   ########.fr        #
+#    Updated: 2023/06/08 16:30:02 by dlu              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ _SRC	:=	ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c \
 			ft_lstlast.c ft_lstsize.c ft_lstclear.c ft_lstiter.c ft_lstmap.c \
 			ft_printf.c ft_printf_parse_format.c ft_printf_parse_nbr.c \
 			ft_printf_print.c ft_printf_utils.c ft_gnl.c ft_gnl_utils.c \
-			ft_read_file.c
+			ft_read_file.c ft_strarrlen.c ft_strarrcpy.c
 SRC		:=	$(addprefix, $(SRCDIR)/, $(_SRC))
 
 OBJDIR	:=	objs

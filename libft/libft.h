@@ -6,7 +6,7 @@
 /*   By: dlu<dlu@student.42berlin.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/15 22:28:32 by dlu               #+#    #+#             */
-/*   Updated: 2023/06/08 13:01:41 by dlu              ###   ########.fr       */
+/*   Updated: 2023/06/08 16:29:31 by dlu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,5 +135,7 @@ int		append_buffer(char **prev, char *buffer, ssize_t n);
 
 /* Additional functions. */
 char	*ft_read_file(const char *filename);
+int		ft_strarrlen(char **arr);
+char	**ft_strarrcpy(char **arr);
 
 #endif

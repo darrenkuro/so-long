@@ -6,7 +6,7 @@
 /*   By: dlu <dlu@student.42berlin.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/03 16:59:23 by dlu               #+#    #+#             */
-/*   Updated: 2023/06/08 13:43:38 by dlu              ###   ########.fr       */
+/*   Updated: 2023/06/08 15:26:07 by dlu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,20 +37,10 @@
 # define ERR_WALL	"Invalid map: wall does not enclose the map."
 # define ERR_PATH	"Invalid map: there is no valid path."
 
-typedef enum e_map_error
-{
-	not_rect,
-	invalid_char,
-	dup_start,
-	dup_exit,
-	no_colletible,
-	not_enclosed,
-	no_valid_path
-}	t_map_error;
-
 typedef struct s_map
 {
 	char	**lines;
+	int		height;
 	int		width;
 	int		collectible;
 	int		player;
@@ -63,7 +53,6 @@ typedef struct s_game
 }	t_game;
 
 void	ft_map_parser(const char *filename, t_game *game);
-void	ft_map_validator(t_game *game);
 void	ft_free_map(t_map *map);
 void	ft_perror_exit(char *msg, t_game *game);
 
