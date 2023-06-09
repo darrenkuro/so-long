@@ -6,7 +6,7 @@
 /*   By: dlu <dlu@student.42berlin.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 14:23:10 by dlu               #+#    #+#             */
-/*   Updated: 2023/06/09 16:16:28 by dlu              ###   ########.fr       */
+/*   Updated: 2023/06/09 16:20:44 by dlu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ void	ft_pick_up(t_game *g)
 	}
 }
 
+/* Move the player to target x and y, check if collectible and exit. */
 void	ft_move(t_game *g, int x, int y)
 {
 	if (g->map->lines[y / 32][x / 32] == C_WALL)

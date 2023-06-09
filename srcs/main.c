@@ -6,12 +6,13 @@
 /*   By: dlu <dlu@student.42berlin.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/03 16:55:06 by dlu               #+#    #+#             */
-/*   Updated: 2023/06/09 16:15:28 by dlu              ###   ########.fr       */
+/*   Updated: 2023/06/09 16:21:48 by dlu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
+/* Load the images from assets. */
 static void	load_image(t_game *game)
 {
 	mlx_texture_t	*texture;
@@ -33,6 +34,7 @@ static void	load_image(t_game *game)
 	mlx_delete_texture(texture);
 }
 
+/* Initialize game data. */
 static void	game_init(t_game *game)
 {
 	game->map = (t_map *) malloc(sizeof(t_map));
@@ -50,6 +52,7 @@ static void	game_init(t_game *game)
 	game->movement = 0;
 }
 
+/* Render the images of map. */
 void	render(t_game *g)
 {
 	int	x;

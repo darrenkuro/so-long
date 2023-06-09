@@ -6,12 +6,13 @@
 /*   By: dlu <dlu@student.42berlin.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 11:40:52 by dlu               #+#    #+#             */
-/*   Updated: 2023/06/09 16:11:33 by dlu              ###   ########.fr       */
+/*   Updated: 2023/06/09 16:22:36 by dlu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
+/* ESC and arrow key hooks. */
 void	ft_key_hook(mlx_key_data_t keydata, void *param)
 {
 	t_game			*game;
