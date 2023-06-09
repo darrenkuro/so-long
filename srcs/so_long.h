@@ -6,7 +6,7 @@
 /*   By: dlu <dlu@student.42berlin.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/03 16:59:23 by dlu               #+#    #+#             */
-/*   Updated: 2023/06/09 14:10:25 by dlu              ###   ########.fr       */
+/*   Updated: 2023/06/09 15:37:26 by dlu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,10 +56,9 @@ typedef struct s_map
 	char	**lines_cpy;
 	int		height;
 	int		width;
-	int		collectible;
+	int		col;
 	int		player;
 	int		exit;
-	t_pos	player_pos;
 }	t_map;
 
 typedef struct s_game
@@ -67,10 +66,14 @@ typedef struct s_game
 	t_map		*map;
 	mlx_t		*mlx;
 	mlx_image_t	*img_player;
+	int32_t		player_id;
 	mlx_image_t	*img_wall;
-	mlx_image_t	*img_collectible;
+	mlx_image_t	*img_col;
 	mlx_image_t	*img_exit;
 	mlx_image_t	*img_floor;
+	t_pos		player_pos;
+	int32_t		collected;
+	int32_t		movement;
 }	t_game;
 
 void	ft_map_parser(const char *filename, t_game *game);
@@ -78,5 +81,6 @@ void	ft_free_map(t_map *map);
 void	ft_perror_exit(char *msg, t_game *game);
 void	ft_key_hook(mlx_key_data_t keydata, void *param);
 void	ft_close_hook(void *param);
+void	ft_move(t_game *g, int x, int y);
 
 #endif

@@ -6,14 +6,14 @@
 #    By: dlu <dlu@student.42berlin.de>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/23 10:49:05 by dlu               #+#    #+#              #
-#    Updated: 2023/06/09 12:11:16 by dlu              ###   ########.fr        #
+#    Updated: 2023/06/09 16:00:48 by dlu              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	:=	so_long
 
 SRCDIR	:=	srcs
-_SRC	:=	main.c utils.c map.c mlx_hook.c
+_SRC	:=	main.c utils.c map.c mlx_hook.c action.c
 SRC		:=	$(addprefix $(SRCDIR)/, $(_SRC))
 
 OBJDIR	:=	objs
@@ -29,7 +29,8 @@ LIBMLX	:=	$(addprefix $(MLXDIR)/, libmlx42.a)
 
 CC		:=	cc
 RM		:=	/bin/rm -f
-CFLAGS	:=	-Wall -Wextra -Werror -g
+#CFLAGS	:=	-Wall -Wextra -Werror -g
+CFLAGS	:= -g
 LFLAGS	:= -L $(LIBDIR) -L $(MLXDIR) -lft -lm -lmlx42 -ldl -lglfw -pthread
 IFLAGS	:= -I $(LIBDIR) -I $(MLXDIR)/include
 

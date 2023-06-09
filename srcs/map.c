@@ -6,7 +6,7 @@
 /*   By: dlu <dlu@student.42berlin.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/28 18:47:04 by dlu               #+#    #+#             */
-/*   Updated: 2023/06/09 10:44:37 by dlu              ###   ########.fr       */
+/*   Updated: 2023/06/09 15:08:46 by dlu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static void	ft_map_parse_chars(t_game *game, t_map *m)
 				&& m->lines[i][j] != C_WALL)
 				ft_perror_exit(ERR_WALL, game);
 			else if (m->lines[i][j] == C_COLLECT)
-				m->collectible++;
+				m->col++;
 			else if (m->lines[i][j] == C_PLAYER)
 				m->player++;
 			else if (m->lines[i][j] == C_EXIT)
@@ -67,9 +67,9 @@ static void	ft_map_check_path(t_game *game, t_map *map)
 		x = -1;
 		while (map->lines[y][++x])
 			if (map->lines[y][x] == C_PLAYER)
-				map->player_pos = (t_pos){x, y};
+				game->player_pos = (t_pos){x, y};
 	}
-	ft_floodfill(map->lines_cpy, game, map->player_pos.x, map->player_pos.y);
+	ft_floodfill(map->lines_cpy, game, game->player_pos.x, game->player_pos.y);
 	y = -1;
 	while (map->lines_cpy[++y])
 	{
@@ -92,7 +92,7 @@ static void	ft_map_validator(t_game *game, t_map *map)
 		ft_perror_exit(ERR_NO_E, game);
 	else if (map->exit > 1)
 		ft_perror_exit(ERR_DUP_E, game);
-	else if (map->collectible == 0)
+	else if (map->col == 0)
 		ft_perror_exit(ERR_NO_C, game);
 }
 
