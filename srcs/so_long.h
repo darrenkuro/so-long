@@ -6,7 +6,7 @@
 /*   By: dlu <dlu@student.42berlin.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/03 16:59:23 by dlu               #+#    #+#             */
-/*   Updated: 2023/06/09 12:10:39 by dlu              ###   ########.fr       */
+/*   Updated: 2023/06/09 14:10:25 by dlu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,12 @@
 # define ERR_WALL	"Invalid map: wall does not enclose the map."
 # define ERR_PATH	"Invalid map: there is no valid path."
 
+# define IMG_WALL	"./assets/wall_32.png"
+# define IMG_FLOOR	"./assets/floor_32.png"
+# define IMG_PLAYER	"./assets/player_single_32.png"
+# define IMG_COL	"./assets/collectible_32.png"
+# define IMG_EXIT	"./assets/exit_single_32.png"
+
 typedef struct s_pos
 {
 	int	x;
@@ -58,8 +64,13 @@ typedef struct s_map
 
 typedef struct s_game
 {
-	t_map	*map;
-	mlx_t	*mlx;
+	t_map		*map;
+	mlx_t		*mlx;
+	mlx_image_t	*img_player;
+	mlx_image_t	*img_wall;
+	mlx_image_t	*img_collectible;
+	mlx_image_t	*img_exit;
+	mlx_image_t	*img_floor;
 }	t_game;
 
 void	ft_map_parser(const char *filename, t_game *game);
