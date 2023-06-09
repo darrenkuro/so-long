@@ -6,7 +6,7 @@
 /*   By: dlu <dlu@student.42berlin.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 17:58:22 by dlu               #+#    #+#             */
-/*   Updated: 2023/06/09 16:22:42 by dlu              ###   ########.fr       */
+/*   Updated: 2023/06/09 18:03:20 by dlu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,9 @@ void	ft_perror_exit(char *msg, t_game *game)
 {
 	ft_putendl_fd(ERR_MSG, STDERR);
 	ft_putendl_fd(msg, STDERR);
-	if (game->map)
+	if (game && game->map)
 		ft_free_map(game->map);
-	if (game->mlx)
+	if (game && game->mlx)
 		mlx_terminate(game->mlx);
 	exit(EXIT_FAILURE);
 }

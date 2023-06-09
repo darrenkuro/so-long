@@ -6,7 +6,7 @@
 /*   By: dlu <dlu@student.42berlin.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 11:40:52 by dlu               #+#    #+#             */
-/*   Updated: 2023/06/09 16:26:19 by dlu              ###   ########.fr       */
+/*   Updated: 2023/06/09 18:04:05 by dlu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,10 @@ void	ft_key_hook(mlx_key_data_t keydata, void *param)
 	game = param;
 	player = game->img_player->instances[0];
 	if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_PRESS)
+	{
 		mlx_terminate(game->mlx);
+		exit(EXIT_SUCCESS);
+	}
 	if (keydata.key == MLX_KEY_UP && keydata.action == MLX_PRESS)
 		ft_move(game, player.x, player.y - 32);
 	if (keydata.key == MLX_KEY_DOWN && keydata.action == MLX_PRESS)
