@@ -6,7 +6,7 @@
 /*   By: dlu <dlu@student.42berlin.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/03 16:59:23 by dlu               #+#    #+#             */
-/*   Updated: 2023/06/08 15:26:07 by dlu              ###   ########.fr       */
+/*   Updated: 2023/06/09 10:05:37 by dlu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,14 +37,22 @@
 # define ERR_WALL	"Invalid map: wall does not enclose the map."
 # define ERR_PATH	"Invalid map: there is no valid path."
 
+typedef struct s_pos
+{
+	int	x;
+	int	y;
+}	t_pos;
+
 typedef struct s_map
 {
 	char	**lines;
+	char	**lines_cpy;
 	int		height;
 	int		width;
 	int		collectible;
 	int		player;
 	int		exit;
+	t_pos	player_pos;
 }	t_map;
 
 typedef struct s_game

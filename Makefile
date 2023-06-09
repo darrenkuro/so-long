@@ -6,7 +6,7 @@
 #    By: dlu <dlu@student.42berlin.de>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/23 10:49:05 by dlu               #+#    #+#              #
-#    Updated: 2023/06/08 13:44:21 by dlu              ###   ########.fr        #
+#    Updated: 2023/06/09 09:39:54 by dlu              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,8 +26,8 @@ LIBFT	:=	$(addprefix $(LIBDIR)/, $(LIBNAME))
 
 CC		:=	cc
 RM		:=	/bin/rm -f
-CFLAGS	:=	-Wall -Wextra -Werror -g
-
+#CFLAGS	:=	-Wall -Wextra -Werror -g
+CFLAGS := -g
 all: $(NAME)
 
 $(NAME): $(LIBFT) $(OBJ)

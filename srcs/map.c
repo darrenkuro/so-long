@@ -6,11 +6,25 @@
 /*   By: dlu <dlu@student.42berlin.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/28 18:47:04 by dlu               #+#    #+#             */
-/*   Updated: 2023/06/08 15:26:17 by dlu              ###   ########.fr       */
+/*   Updated: 2023/06/09 10:10:58 by dlu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+/* Fill the reachable grid with 'X'. */
+static void	ft_floodfill(char **grid, t_game *g, int x, int y)
+{
+	if (x < 0 || y < 0 || y >= g->map->height || x >= g->map->width
+		|| (grid[y][x] != C_FLOOR && grid[y][x] != C_PLAYER
+		&& grid[y][x] != C_COLLECT && grid[y][x] != C_EXIT))
+		return ;
+	grid[y][x] = 'X';
+	ft_floodfill(grid, g, x + 1, y);
+	ft_floodfill(grid, g, x - 1, y);
+	ft_floodfill(grid, g, x, y + 1);
+	ft_floodfill(grid, g, x, y - 1);
+}
 
 /* Parse chars of the map, exit if there's invalid char or wrong width. */
 static void	ft_map_parse_chars(t_game *game, t_map *m)
@@ -41,14 +55,33 @@ static void	ft_map_parse_chars(t_game *game, t_map *m)
 	}
 }
 
-/* Handles file error with system perror and exit. */
-static void	ft_file_perror_exit(void)
+/* Validate the map has a valid path. */
+static void	ft_map_check_path(t_game *game, t_map *map)
 {
-	ft_putendl_fd(ERR_MSG, STDERR);
-	perror(ERR_OPEN);
-	exit(EXIT_FAILURE);
+	int	x;
+	int	y;
+
+	y = -1;
+	while (map->lines[++y])
+	{
+		x = -1;
+		while (map->lines[y][++x])
+			if (map->lines[y][x] == C_PLAYER)
+				map->player_pos = (t_pos){x, y};
+	}
+	ft_floodfill(map->lines_cpy, game, map->player_pos.x, map->player_pos.y);
+	y = -1;
+	while (map->lines_cpy[++y])
+	{
+		x = -1;
+		while (map->lines_cpy[y][++x])
+			if (map->lines_cpy[y][x] == C_EXIT
+				|| map->lines_cpy[y][x] == C_COLLECT)
+				ft_perror_exit(ERR_PATH, game);
+	}
 }
 
+/* Validate the map has the right number of c, p, and e. */
 static void	ft_map_validator(t_game *game, t_map *map)
 {
 	if (map->player == 0)
@@ -73,11 +106,17 @@ void	ft_map_parser(const char *filename, t_game *game)
 		ft_perror_exit(ERR_EXT, game);
 	content = ft_read_file(filename);
 	if (!content)
-		ft_file_perror_exit();
+	{
+		ft_putendl_fd(ERR_MSG, STDERR);
+		perror(ERR_OPEN);
+		exit(EXIT_FAILURE);
+	}
 	game->map->lines = ft_split(content, '\n');
+	game->map->lines_cpy = ft_split(content, '\n');
 	free(content);
 	game->map->width = ft_strlen(game->map->lines[0]);
 	game->map->height = ft_strarrlen(game->map->lines);
 	ft_map_parse_chars(game, game->map);
 	ft_map_validator(game, game->map);
+	ft_map_check_path(game, game->map);
 }
