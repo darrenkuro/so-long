@@ -6,7 +6,7 @@
 /*   By: dlu <dlu@student.42berlin.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/03 16:59:23 by dlu               #+#    #+#             */
-/*   Updated: 2023/06/09 15:37:26 by dlu              ###   ########.fr       */
+/*   Updated: 2023/06/09 16:37:35 by dlu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@
 # define ERR_ARG	"Wrong number of arguments: requires 1 (map file path)."
 # define ERR_EXT	"Wrong file format, maps must have extension 'ber'."
 # define ERR_OPEN	"Failed to open map"
+# define ERR_EMPTY	"File is empty."
 # define ERR_CHAR	"Invalid map: invalid character."
 # define ERR_WIDTH	"Invalid map: not a rectangle."
 # define ERR_NO_P	"Invalid map: missing starting player position."

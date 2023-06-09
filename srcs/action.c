@@ -6,7 +6,7 @@
 /*   By: dlu <dlu@student.42berlin.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 14:23:10 by dlu               #+#    #+#             */
-/*   Updated: 2023/06/09 16:20:44 by dlu              ###   ########.fr       */
+/*   Updated: 2023/06/09 16:26:58 by dlu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,5 +41,8 @@ void	ft_move(t_game *g, int x, int y)
 	ft_printf("Current movement count: %d\n", g->movement);
 	ft_pick_up(g);
 	if (g->map->lines[y / 32][x / 32] == C_EXIT && g->collected == g->map->col)
+	{
 		mlx_terminate(g->mlx);
+		exit(EXIT_SUCCESS);
+	}
 }
