@@ -6,7 +6,7 @@
 /*   By: dlu <dlu@student.42berlin.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/03 16:55:06 by dlu               #+#    #+#             */
-/*   Updated: 2023/06/09 10:13:06 by dlu              ###   ########.fr       */
+/*   Updated: 2023/06/09 11:24:40 by dlu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,14 @@ static void	game_init(t_game *game)
 int	main(int ac, char **av)
 {
 	t_game	game;
+	mlx_t	*mlx;
 
 	if (ac != 2)
 		ft_perror_exit(ERR_ARG, NULL);
 	game_init(&game);
 	ft_map_parser(av[1], &game);
+	mlx = mlx_init(256, 256, "MLX42", true);
+	mlx_loop(mlx);
 	return (EXIT_SUCCESS);
 }
 
