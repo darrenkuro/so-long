@@ -6,7 +6,7 @@
 /*   By: dlu <dlu@student.42berlin.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/03 16:59:23 by dlu               #+#    #+#             */
-/*   Updated: 2023/06/09 10:56:50 by dlu              ###   ########.fr       */
+/*   Updated: 2023/06/09 12:10:39 by dlu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,10 +59,13 @@ typedef struct s_map
 typedef struct s_game
 {
 	t_map	*map;
+	mlx_t	*mlx;
 }	t_game;
 
 void	ft_map_parser(const char *filename, t_game *game);
 void	ft_free_map(t_map *map);
 void	ft_perror_exit(char *msg, t_game *game);
+void	ft_key_hook(mlx_key_data_t keydata, void *param);
+void	ft_close_hook(void *param);
 
 #endif

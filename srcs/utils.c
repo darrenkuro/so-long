@@ -6,7 +6,7 @@
 /*   By: dlu <dlu@student.42berlin.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 17:58:22 by dlu               #+#    #+#             */
-/*   Updated: 2023/06/09 10:17:47 by dlu              ###   ########.fr       */
+/*   Updated: 2023/06/09 12:13:43 by dlu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void	ft_free_map(t_map *map)
 	while (map->lines_cpy && map->lines_cpy[++i])
 		free(map->lines_cpy[i]);
 	free(map->lines_cpy);
+	free(map);
 }
 
 /* Print given message to stderr, free data and exit with failure status. */
@@ -32,10 +33,9 @@ void	ft_perror_exit(char *msg, t_game *game)
 {
 	ft_putendl_fd(ERR_MSG, STDERR);
 	ft_putendl_fd(msg, STDERR);
-	if (game)
-	{
+	if (game->map)
 		ft_free_map(game->map);
-		free(game->map);
-	}
+	if (game->mlx)
+		mlx_terminate(game->mlx);
 	exit(EXIT_FAILURE);
 }

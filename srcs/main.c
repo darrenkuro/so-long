@@ -6,7 +6,7 @@
 /*   By: dlu <dlu@student.42berlin.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/03 16:55:06 by dlu               #+#    #+#             */
-/*   Updated: 2023/06/09 11:24:40 by dlu              ###   ########.fr       */
+/*   Updated: 2023/06/09 12:13:20 by dlu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,19 +24,23 @@ static void	game_init(t_game *game)
 	game->map->height = 0;
 	game->map->lines = NULL;
 	game->map->lines_cpy = NULL;
+	game->mlx = NULL;
 }
 
 int	main(int ac, char **av)
 {
 	t_game	game;
-	mlx_t	*mlx;
 
 	if (ac != 2)
 		ft_perror_exit(ERR_ARG, NULL);
 	game_init(&game);
 	ft_map_parser(av[1], &game);
-	mlx = mlx_init(256, 256, "MLX42", true);
-	mlx_loop(mlx);
+	game.mlx = mlx_init(256, 256, "SO_LONG", true);
+	if (!game.mlx)
+		ft_perror_exit((char *) mlx_strerror(mlx_errno), &game);
+	mlx_key_hook(game.mlx, &ft_key_hook, &game);
+	mlx_close_hook(game.mlx, &ft_close_hook, &game);
+	mlx_loop(game.mlx);
 	return (EXIT_SUCCESS);
 }
 

@@ -6,14 +6,14 @@
 #    By: dlu <dlu@student.42berlin.de>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/23 10:49:05 by dlu               #+#    #+#              #
-#    Updated: 2023/06/09 11:31:12 by dlu              ###   ########.fr        #
+#    Updated: 2023/06/09 12:11:16 by dlu              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	:=	so_long
 
 SRCDIR	:=	srcs
-_SRC	:=	main.c utils.c map.c
+_SRC	:=	main.c utils.c map.c mlx_hook.c
 SRC		:=	$(addprefix $(SRCDIR)/, $(_SRC))
 
 OBJDIR	:=	objs
