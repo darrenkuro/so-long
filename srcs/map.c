@@ -6,7 +6,7 @@
 /*   By: dlu <dlu@student.42berlin.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/28 18:47:04 by dlu               #+#    #+#             */
-/*   Updated: 2023/06/09 10:10:58 by dlu              ###   ########.fr       */
+/*   Updated: 2023/06/09 10:20:25 by dlu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,6 +109,7 @@ void	ft_map_parser(const char *filename, t_game *game)
 	{
 		ft_putendl_fd(ERR_MSG, STDERR);
 		perror(ERR_OPEN);
+		free(game->map);
 		exit(EXIT_FAILURE);
 	}
 	game->map->lines = ft_split(content, '\n');

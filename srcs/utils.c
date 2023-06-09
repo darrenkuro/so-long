@@ -6,7 +6,7 @@
 /*   By: dlu <dlu@student.42berlin.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 17:58:22 by dlu               #+#    #+#             */
-/*   Updated: 2023/06/09 10:08:58 by dlu              ###   ########.fr       */
+/*   Updated: 2023/06/09 10:17:47 by dlu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@ void	ft_free_map(t_map *map)
 	int	i;
 
 	i = -1;
-	while (map->lines[++i])
+	while (map->lines && map->lines[++i])
 		free(map->lines[i]);
 	free(map->lines);
 	i = -1;
-	while (map->lines_cpy[++i])
+	while (map->lines_cpy && map->lines_cpy[++i])
 		free(map->lines_cpy[i]);
 	free(map->lines_cpy);
 }

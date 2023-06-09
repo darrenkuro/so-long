@@ -6,7 +6,7 @@
 /*   By: dlu <dlu@student.42berlin.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/01 23:35:39 by dlu               #+#    #+#             */
-/*   Updated: 2023/06/08 12:59:15 by dlu              ###   ########.fr       */
+/*   Updated: 2023/06/09 10:22:03 by dlu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,10 @@ char	*ft_read_file(const char *filename)
 	char	buffer[1];
 
 	fd = open(filename, O_RDONLY);
+	if (fd < 0)
+		return (NULL);
 	ret = malloc((file_len(filename) + 1) * sizeof(char));
-	if (fd < 0 || !ret)
+	if (!ret)
 		return (NULL);
 	idx = 0;
 	while (read(fd, buffer, 1))
