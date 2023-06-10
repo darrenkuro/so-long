@@ -6,7 +6,7 @@
 #    By: dlu <dlu@student.42berlin.de>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/23 10:49:05 by dlu               #+#    #+#              #
-#    Updated: 2023/06/09 16:00:48 by dlu              ###   ########.fr        #
+#    Updated: 2023/06/10 12:34:19 by dlu              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,9 +29,16 @@ LIBMLX	:=	$(addprefix $(MLXDIR)/, libmlx42.a)
 
 CC		:=	cc
 RM		:=	/bin/rm -f
-#CFLAGS	:=	-Wall -Wextra -Werror -g
-CFLAGS	:= -g
-LFLAGS	:= -L $(LIBDIR) -L $(MLXDIR) -lft -lm -lmlx42 -ldl -lglfw -pthread
+CFLAGS	:=	-Wall -Wextra -Werror -g
+
+ifeq ($(shell uname -s), Darwin)
+	LFLAGS	:=	-L $(LIBDIR) -L $(MLXDIR) -lft -lmlx42 -lglfw \
+				-L "/opt/homebrew/Cellar/glfw/3.3.8/lib"
+else ifeq ($(shell uname -s), Linux)
+	LFLAGS	:=	-L $(LIBDIR) -L $(MLXDIR) -lft -lm -lmlx42 -ldl -lglfw \
+				-pthread
+endif
+
 IFLAGS	:= -I $(LIBDIR) -I $(MLXDIR)/include
 
 all: $(NAME)
