@@ -6,7 +6,7 @@
 #    By: dlu <dlu@student.42berlin.de>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/23 10:49:05 by dlu               #+#    #+#              #
-#    Updated: 2025/06/22 10:13:10 by dlu              ###   ########.fr        #
+#    Updated: 2025/06/22 10:24:03 by dlu              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ SRCDIR	:=	src
 _SRC	:=	main.c utils.c map.c mlx_hook.c action.c
 SRC		:=	$(addprefix $(SRCDIR)/,$(_SRC))
 
-OBJDIR	:=	objs
+OBJDIR	:=	obj
 _OBJ	:=	$(_SRC:.c=.o)
 OBJ		:=	$(addprefix $(OBJDIR)/,$(_OBJ))
 
