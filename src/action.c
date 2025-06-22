@@ -6,7 +6,7 @@
 /*   By: dlu <dlu@student.42berlin.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 14:23:10 by dlu               #+#    #+#             */
-/*   Updated: 2023/06/09 16:26:58 by dlu              ###   ########.fr       */
+/*   Updated: 2025/06/22 10:11:52 by dlu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 /* Check if the current position has collectible, and pick up if so. */
 void	ft_pick_up(t_game *g)
 {
-	int	i;
+	size_t	i;
 
 	i = -1;
 	while (++i < g->img_col->count)

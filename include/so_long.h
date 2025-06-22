@@ -6,7 +6,7 @@
 /*   By: dlu <dlu@student.42berlin.de>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/03 16:59:23 by dlu               #+#    #+#             */
-/*   Updated: 2023/06/09 16:37:35 by dlu              ###   ########.fr       */
+/*   Updated: 2025/06/22 10:05:23 by dlu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,10 @@
 # include "MLX42/MLX42.h"
 # include <stdio.h>
 # include <errno.h>
+
+# define STDIN		0
+# define STDOUT		1
+# define STDERR		2
 
 # define C_PLAYER	'P'
 # define C_EXIT		'E'
